@@ -5,6 +5,28 @@
   <meta charset="UTF-8">
   <title>VOCÊ FOI HACKEADO</title>
   <style>
+    @keyframes glitch {
+      0% { text-shadow: 2px 2px red; }
+      20% { text-shadow: -2px 2px lime; }
+      40% { text-shadow: 2px -2px cyan; }
+      60% { text-shadow: -2px -2px magenta; }
+      80% { text-shadow: 2px 2px yellow; }
+      100% { text-shadow: -2px -2px blue; }
+    }
+
+    @keyframes flashBg {
+      0% { background-color: black; }
+      50% { background-color: #111; }
+      100% { background-color: black; }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translate(0); }
+      25% { transform: translate(5px, 5px); }
+      50% { transform: translate(-5px, -5px); }
+      75% { transform: translate(5px, -5px); }
+    }
+
     body {
       margin: 0;
       background-color: black;
@@ -16,41 +38,82 @@
       justify-content: center;
       height: 100vh;
       text-align: center;
+      animation: flashBg 1s infinite;
     }
+
     h1 {
-      font-size: 40px;
+      font-size: 48px;
       margin-bottom: 20px;
+      animation: glitch 0.3s infinite;
     }
+
     .alerta {
       color: white;
       max-width: 800px;
       font-size: 20px;
       margin-bottom: 30px;
+      animation: shake 0.5s infinite;
     }
+
     .clock {
-      font-size: 48px;
+      font-size: 52px;
       margin-top: 20px;
       color: red;
       font-weight: bold;
+      animation: glitch 0.4s infinite;
     }
+
     .webcam {
       margin-top: 30px;
       font-size: 18px;
       color: lime;
+      background: red;
+      padding: 10px;
+      border-radius: 8px;
+      transform: rotate(-5deg);
+      animation: shake 1s infinite;
+    }
+
+    .warning {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      font-size: 20px;
+      background: yellow;
+      color: black;
+      padding: 5px;
+      animation: flashBg 0.5s infinite;
+    }
+
+    .overlay-img {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100px;
+      height: auto;
+      opacity: 0.5;
+      animation: shake 0.3s infinite;
     }
   </style>
 </head>
 <body onload="startCountdown()">
+  <div class="warning">⚠️ ALERTA: Acesso remoto detectado — PAZU ESTÁ SENDO VIGIADO ⚠️</div>
+
   <h1>OLÁ PAZU</h1>
   <div class="alerta">
     Nós hackeamos você. Sua webcam está ativada.<br>
-    Todas as suas informações foram copiadas, inclusive prints e vídeos comprometedores.<br><br>
+    Todas as suas informações foram copiadas, inclusive prints, áudios e vídeos vergonhosos.<br><br>
     Para evitar que tudo seja vazado publicamente, você deve pagar <strong>10.000 Kwanzas</strong> nas próximas 1 hora.<br><br>
-    Caso contrário, o vazamento será automático e irreversível.<br>
-    Estamos observando você.<br>
+    Caso contrário, o vazamento será automático, mundial e destruidor de reputação.<br>
+    Estamos observando você.<br><br>
+    ⚠️ Seus históricos, suas conversas, e até aquele print que você achou que tinha apagado… nós temos tudo. ⚠️<br>
+    Essa é sua única chance de não virar meme.
   </div>
+
   <div class="clock" id="countdown">01:00:00</div>
-  <div class="webcam">[●] Webcam ONLINE</div>
+  <div class="webcam">[●] Webcam ONLINE - Pazu sob vigilância em tempo real</div>
+
+  <img src="https://media.tenor.com/nqUPz9nhieQAAAAC/hacker.gif" class="overlay-img" alt="hacker gif">
 
   <script>
     function startCountdown() {
@@ -59,7 +122,7 @@
 
       setInterval(function () {
         if (totalSeconds <= 0) {
-          countdown.innerHTML = "TEMPO ESGOTADO";
+          countdown.innerHTML = "TEMPO ESGOTADO - VAZAMENTO EM ANDAMENTO";
           countdown.style.color = "white";
           return;
         }
