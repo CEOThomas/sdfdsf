@@ -1,55 +1,79 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Cabelo de Bombril Anonymous</title>
+  <title>VOCÊ FOI HACKEADO</title>
   <style>
     body {
       margin: 0;
       background-color: black;
-      color: white;
-      font-family: Arial, sans-serif;
+      color: red;
+      font-family: 'Courier New', Courier, monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
       text-align: center;
     }
     h1 {
-      margin-top: 30px;
-      font-size: 26px;
-      color: #ff0000;
+      font-size: 40px;
+      margin-bottom: 20px;
     }
-    .zoeiras {
+    .alerta {
+      color: white;
+      max-width: 800px;
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
+    .clock {
+      font-size: 48px;
       margin-top: 20px;
-      font-size: 16px;
-      color: #ccc;
-      line-height: 1.6;
+      color: red;
+      font-weight: bold;
     }
-    .live-container {
+    .webcam {
       margin-top: 30px;
-      display: flex;
-      justify-content: center;
-    }
-    iframe {
-      width: 940px;
-      height: 500px;
-      border: none;
+      font-size: 18px;
+      color: lime;
     }
   </style>
 </head>
-<body>
-  <h1>ASSISTIR A LIVE DO CABELO DE BOMBRIL SEM DEIXAR ELE FAMOSO</h1>
-
-  <div class="zoeiras">
-    <p>🤫 Silêncio… cada segundo assistido aqui é um view que ele não vai receber.</p>
-    <p>🧼 O cabelo continua o mesmo: palha de aço versão 2.0.</p>
-    <p>📉 A fama vem? Não hoje. Não aqui.</p>
-    <p>👀 Aqui a gente vê, mas não fortalece o ego.</p>
-    <p>🔥 "Influencer"? Só se for de frustração.</p>
+<body onload="startCountdown()">
+  <h1>OLÁ PAZU</h1>
+  <div class="alerta">
+    Nós hackeamos você. Sua webcam está ativada.<br>
+    Todas as suas informações foram copiadas, inclusive prints e vídeos comprometedores.<br><br>
+    Para evitar que tudo seja vazado publicamente, você deve pagar <strong>10.000 Kwanzas</strong> nas próximas 1 hora.<br><br>
+    Caso contrário, o vazamento será automático e irreversível.<br>
+    Estamos observando você.<br>
   </div>
+  <div class="clock" id="countdown">01:00:00</div>
+  <div class="webcam">[●] Webcam ONLINE</div>
 
-  <div class="live-container">
-    <iframe
-      src="https://player.twitch.tv/?channel=pazuuu1&parent=pazucabeloduro.vercel.app"
-      allowfullscreen>
-    </iframe>
-  </div>
+  <script>
+    function startCountdown() {
+      let totalSeconds = 3600;
+      const countdown = document.getElementById("countdown");
+
+      setInterval(function () {
+        if (totalSeconds <= 0) {
+          countdown.innerHTML = "TEMPO ESGOTADO";
+          countdown.style.color = "white";
+          return;
+        }
+
+        totalSeconds--;
+        const hours = String(Math.floor(totalSeconds / 3600)).padStart(2, '0');
+        const minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0');
+        const seconds = String(totalSeconds % 60).padStart(2, '0');
+
+        countdown.innerHTML = `${hours}:${minutes}:${seconds}`;
+      }, 1000);
+    }
+
+    document.documentElement.requestFullscreen().catch(() => {});
+  </script>
 </body>
 </html>
