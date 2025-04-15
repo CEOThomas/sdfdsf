@@ -27,6 +27,11 @@
       75% { transform: translate(5px, -5px); }
     }
 
+    @keyframes floatMessages {
+      0% { opacity: 0; top: 100%; }
+      100% { opacity: 1; top: -10%; }
+    }
+
     body {
       margin: 0;
       background-color: black;
@@ -39,6 +44,7 @@
       height: 100vh;
       text-align: center;
       animation: flashBg 1s infinite;
+      overflow: hidden;
     }
 
     h1 {
@@ -94,6 +100,27 @@
       opacity: 0.5;
       animation: shake 0.3s infinite;
     }
+
+    .floating-message {
+      position: fixed;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 24px;
+      color: white;
+      animation: floatMessages 10s linear infinite;
+    }
+
+    .pay-button {
+      margin-top: 40px;
+      font-size: 20px;
+      padding: 15px 30px;
+      background-color: red;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      animation: glitch 0.5s infinite;
+    }
   </style>
 </head>
 <body onload="startCountdown()">
@@ -103,7 +130,7 @@
   <div class="alerta">
     Nós hackeamos você. Sua webcam está ativada.<br>
     Todas as suas informações foram copiadas, inclusive prints, áudios e vídeos vergonhosos.<br><br>
-    Para evitar que tudo seja vazado publicamente, você deve pagar <strong>10.000 Kwanzas</strong> nas próximas 1 hora.<br><br>
+    Para evitar que tudo seja vazado publicamente, você deve pagar <strong>10.000 Kwanzas</strong> para <u>Amanda Sardei</u> nas próximas 1 hora.<br><br>
     Caso contrário, o vazamento será automático, mundial e destruidor de reputação.<br>
     Estamos observando você.<br><br>
     ⚠️ Seus históricos, suas conversas, e até aquele print que você achou que tinha apagado… nós temos tudo. ⚠️<br>
@@ -113,7 +140,16 @@
   <div class="clock" id="countdown">01:00:00</div>
   <div class="webcam">[●] Webcam ONLINE - Pazu sob vigilância em tempo real</div>
 
+  <button class="pay-button" onclick="alert('Transação simulada enviada para Amanda Sardei. Você ainda está ferrado.')">
+    PAGAR 10.000 KWANZAS PARA AMANDA SARDEI
+  </button>
+
   <img src="https://media.tenor.com/nqUPz9nhieQAAAAC/hacker.gif" class="overlay-img" alt="hacker gif">
+
+  <div class="floating-message" style="top:80%;">VOCÊ ESTÁ SENDO MONITORADO</div>
+  <div class="floating-message" style="top:60%;">TODOS OS ARQUIVOS JÁ FORAM ENVIADOS</div>
+  <div class="floating-message" style="top:40%;">VÁZAMENTO INICIANDO EM BREVE</div>
+  <div class="floating-message" style="top:20%;">10.000 KWANZAS OU A FAMA NEGATIVA</div>
 
   <script>
     function startCountdown() {
